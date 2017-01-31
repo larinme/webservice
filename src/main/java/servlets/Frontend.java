@@ -1,3 +1,7 @@
+package servlets;
+
+import templator.VelocityHelper;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +12,6 @@ import java.util.Map;
 
 public class Frontend extends HttpServlet {
 
-    private static final String VELOCITY_TEMPLATE_PATH_PREFIX = "/src/main/resources/templates";
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
@@ -17,7 +20,7 @@ public class Frontend extends HttpServlet {
         pageVariables.put("message", "");
 
         response.getWriter().println(
-                new VelocityHelper(VELOCITY_TEMPLATE_PATH_PREFIX + "/form.vm", pageVariables)
+                new VelocityHelper("templates/form.vm", pageVariables)
         );
 
         response.setContentType("text/html;charset=utf-8");
@@ -41,7 +44,7 @@ public class Frontend extends HttpServlet {
         pageVariables.put("message", message == null ? "" : message);
 
         response.getWriter().println(
-                new VelocityHelper(VELOCITY_TEMPLATE_PATH_PREFIX + "/form.vm", pageVariables)
+                new VelocityHelper("templates/form.vm", pageVariables)
         );
     }
 

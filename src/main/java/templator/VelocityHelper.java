@@ -1,6 +1,10 @@
+package templator;
+
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import java.io.StringWriter;
 import java.util.Map;
@@ -12,7 +16,7 @@ public class VelocityHelper {
     private String result;
 
     public VelocityHelper(String path, Map<String, String> params){
-        this.path = path; 
+        this.path = path;
         this.params = params;
         
         build();
@@ -20,7 +24,10 @@ public class VelocityHelper {
 
     private void build() {
         VelocityEngine ve = new VelocityEngine();
+        ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+        ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
         ve.init();
+
 
         Template template = ve.getTemplate(path);
 
