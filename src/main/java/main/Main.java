@@ -8,8 +8,8 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import servlets.SingInServlet;
-import servlets.SingUpServlet;
+import servlets.auth.SingInServlet;
+import servlets.auth.SingUpServlet;
 
 public class Main {
 
